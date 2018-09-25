@@ -41,7 +41,7 @@ public class NoteBook {
 		return via.pop();
 	}
 	
-	public Chapter getParent() {
+	public Chapter peek() {
 		if(!via.isEmpty()) {
 			return via.peek();
 		}
@@ -49,7 +49,7 @@ public class NoteBook {
 	}
 	
 	public void note(Chapter chapter) {
-		Chapter parent = getParent();
+		Chapter parent = peek();
 		if(parent != null) {
 			parent.addChildren(chapter);
 		}else {

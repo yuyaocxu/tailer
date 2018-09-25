@@ -64,7 +64,7 @@ public class Tailer {
 		Chapter chapter = noteBook.getCurrent();
 		chapter.setEndTime(System.currentTimeMillis());
 		chapter.arrange();
-		if(noteBook.getParent() == null) {
+		if(noteBook.peek() == null) {
 			clear();
 			deliver(noteBook);
 		}
