@@ -1,11 +1,11 @@
-package me.cxy.tailer.boss.impl;
+package me.cxy.tailer.deliver.impl;
 
 import com.alibaba.fastjson.JSON;
 
-import me.cxy.tailer.boss.Boss;
+import me.cxy.tailer.deliver.Deliver;
 import me.cxy.tailer.tree.NoteBook;
 
-public class SimpleBoss implements Boss {
+public class SimpleDeliver implements Deliver {
 
 	@Override
 	public void handle(NoteBook noteBook) {

@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import me.cxy.tailer.Tailer;
-import me.cxy.tailer.boss.Boss;
-import me.cxy.tailer.boss.impl.SimpleBoss;
+import me.cxy.tailer.deliver.Deliver;
+import me.cxy.tailer.deliver.impl.SimpleDeliver;
 
 @SpringBootApplication
 public class TailerDemo{
@@ -18,12 +18,12 @@ public class TailerDemo{
 	
 	@Bean
 	public Tailer createTailer() {
-		return new Tailer(createBoss());
+		return new Tailer(createDeliver());
 	}
 	
 	@Bean
-	public Boss createBoss() {
-		return new SimpleBoss();
+	public Deliver createDeliver() {
+		return new SimpleDeliver();
 	}
 	
 }

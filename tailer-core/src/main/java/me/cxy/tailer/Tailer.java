@@ -2,7 +2,7 @@ package me.cxy.tailer;
 
 import java.util.UUID;
 
-import me.cxy.tailer.boss.Boss;
+import me.cxy.tailer.deliver.Deliver;
 import me.cxy.tailer.tree.Chapter;
 import me.cxy.tailer.tree.NoteBook;
 
@@ -13,13 +13,13 @@ import me.cxy.tailer.tree.NoteBook;
  */
 public class Tailer {
 	
-	private Boss boss;
+	private Deliver deliver;
 	
 	private ThreadLocal<NoteBook> threadLocal = new ThreadLocal<>();
 	
-	public Tailer(Boss boss) {
+	public Tailer(Deliver deliver) {
 		super();
-		this.boss = boss;
+		this.deliver = deliver;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class Tailer {
 	 * @param noteBook
 	 */
 	private void deliver(NoteBook noteBook) {
-		boss.handle(noteBook);
+		deliver.handle(noteBook);
 	}
 	
 	public NoteBook getNoteBook() {
