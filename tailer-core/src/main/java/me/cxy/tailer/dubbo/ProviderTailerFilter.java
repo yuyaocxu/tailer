@@ -1,5 +1,7 @@
 package me.cxy.tailer.dubbo;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.alibaba.dubbo.rpc.Filter;
 import com.alibaba.dubbo.rpc.Invocation;
 import com.alibaba.dubbo.rpc.Invoker;
@@ -8,21 +10,20 @@ import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.RpcException;
 
 import me.cxy.tailer.Tailer;
-import me.cxy.tailer.tree.NoteBook;
 
-public class DubboConsumerTailerFilter implements Filter{
+public class ProviderTailerFilter implements Filter{
 	
 	private Tailer tailer;
 
 	@Override
 	public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-		NoteBook noteBook = tailer.getNoteBook();
-		if(noteBook == null) {
+		String target = RpcContext.getContext().getAttachment("target");
+		if(StringUtils.isBlank(target)) {
 			tailer.init();
+		}else {
+			tailer.init(target);
 		}
-		RpcContext.getContext().setAttachment("target", noteBook.getTarget());
-		Result result = invoker.invoke(invocation);
-		return result;
+		return invoker.invoke(invocation);
 	}
 
 	public Tailer getTailer() {
