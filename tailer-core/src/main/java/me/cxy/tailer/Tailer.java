@@ -13,13 +13,13 @@ import me.cxy.tailer.tree.NoteBook;
  */
 public class Tailer {
 	
-	private Boss employer;
+	private Boss boss;
 	
 	private ThreadLocal<NoteBook> threadLocal = new ThreadLocal<>();
 	
-	public Tailer(Boss employer) {
+	public Tailer(Boss boss) {
 		super();
-		this.employer = employer;
+		this.boss = boss;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class Tailer {
 	 * @param noteBook
 	 */
 	private void deliver(NoteBook noteBook) {
-		employer.handle(noteBook);
+		boss.handle(noteBook);
 	}
 	
 	public NoteBook getNoteBook() {
