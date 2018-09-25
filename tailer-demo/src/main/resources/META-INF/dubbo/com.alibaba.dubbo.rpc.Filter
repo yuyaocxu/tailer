@@ -1,2 +1,0 @@
-consumerTailer=me.cxy.tailer.dubbo.ConsumerTailer
-providerTailer=me.cxy.tailer.dubbo.ProviderTailer
